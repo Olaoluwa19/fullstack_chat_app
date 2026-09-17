@@ -1,0 +1,6 @@
+bun.com
+expo.dev
+
+backend - bun init -y
+web - bun create vite .
+bunx create-expo-app@latest .
