@@ -4,3 +4,10 @@ expo.dev
 backend - bun init -y
 web - bun create vite .
 bunx create-expo-app@latest .
+
+rm -rf .git
+git init
+git add .
+git commit -m "initial commit"
+
+bun add express cors mongoose socket.io @clerk/express @types/express
