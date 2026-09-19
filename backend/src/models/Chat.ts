@@ -17,13 +17,11 @@ const ChatSchema = new Schema<IChat>(
         required: true,
       },
     ],
-    lastMessage: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Message",
-        default: null,
-      },
-    ],
+    lastMessage: {
+      type: Schema.Types.ObjectId,
+      ref: "Message",
+      default: null,
+    },
     lastMessageAt: {
       type: Date,
       default: Date.now(),
