@@ -1,10 +1,14 @@
-import type { Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import type { AuthRequest } from "../middleware/auth";
 import { User } from "../models/User";
 import { clerkClient, getAuth } from "@clerk/express";
 
 // todo: add the next later
-export async function getMe(req: AuthRequest, res: Response) {
+export async function getMe(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) {
   try {
     const userId = req.userId;
     const user = await User.findById(userId);
@@ -16,12 +20,16 @@ export async function getMe(req: AuthRequest, res: Response) {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ message: "Internal server error " });
-    // next()
+    res.status(500);
+    next(error);
   }
 }
 
-export async function authCallback(req: Request, res: Response) {
+export async function authCallback(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   try {
     const { isAuthenticated, userId: clerkId } = getAuth(req);
 
@@ -46,7 +54,7 @@ export async function authCallback(req: Request, res: Response) {
       });
     }
   } catch (error) {
-    res.status(500).json({ message: "Internal server error " });
-    // next()
+    res.status(500);
+    next(error);
   }
 }

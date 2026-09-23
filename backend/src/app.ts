@@ -1,6 +1,7 @@
 import express from "express";
 
 import { clerkMiddleware } from "@clerk/express";
+import { errorHandler } from "./middleware/errorHandler";
 
 import authRoutes from "./routes/authRoute";
 import chatRoutes from "./routes/chatRoute";
@@ -21,5 +22,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/chats", chatRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+app.use(errorHandler);
 
 export default app;
