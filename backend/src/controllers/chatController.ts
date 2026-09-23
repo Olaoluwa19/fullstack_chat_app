@@ -9,7 +9,7 @@ export async function getChats(
 ) {
   try {
     const userId = req.userId;
-    const chats = await Chat.find({ paticipants: userId })
+    const chats = await Chat.find({ participants: userId })
       .populate("participants", "name email avatar")
       .populate("lastMessage")
       .sort({ lastMessageAt: -1 });
