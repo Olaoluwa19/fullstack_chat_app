@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import { clerkClient, getAuth } from "@clerk/express";
 
 export type AuthRequest = Request & {
-  useId?: string;
+  userId?: string;
 };
 
 export const protectRoute = async (
@@ -11,6 +11,7 @@ export const protectRoute = async (
   next: NextFunction,
 ) => {
   try {
+    // Use `getAuth()` to get the user's `userId`
     const { isAuthenticated, userId: clerkId } = getAuth(req);
 
     if (!isAuthenticated) {
@@ -18,6 +19,7 @@ export const protectRoute = async (
       return;
     }
 
+    // Use the `getUser()` method to get the user's User object
     const user = await clerkClient.users.getUser(clerkId);
     if (!user) return res.status(404).json({ message: "User not found" });
 
