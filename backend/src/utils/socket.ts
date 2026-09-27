@@ -50,7 +50,7 @@ export const initializeSocket = (httpServer: HttpServer) => {
     const userId = (socket as SocketWithUserId).userId;
 
     // send list of currently online users to the newly connected client
-    socket.emit("online-users", { userId: Array.from(onlineUsers.keys()) });
+    socket.emit("online-users", { userIds: Array.from(onlineUsers.keys()) });
 
     // store user in the onlineUsers map
     onlineUsers.set(userId, socket.id);
@@ -68,7 +68,7 @@ export const initializeSocket = (httpServer: HttpServer) => {
       socket.leave(`chat: ${chatId}`);
     });
 
-    // handele sending messages
+    // handle sending messages
     socket.on(
       "send-message",
       async (data: { chatId: string; text: string }) => {
