@@ -18,3 +18,9 @@ create an application and give it a name
 run bun add @clerk/react for your frontend(web),
 set your Clerk API keys
 then continue following the steps
+
+// VERCEL
+bun add -d bun-types
+bun add -g vercel
+vercel          # first time: creates project + preview URL
+vercel --prod   # promote to production
