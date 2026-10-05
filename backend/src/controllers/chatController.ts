@@ -1,6 +1,6 @@
 import type { NextFunction, Response } from "express";
 import type { AuthRequest } from "../middleware/auth";
-import { Chat } from "../models/Chat";
+import { Chat } from "../models/Chat.js";
 
 export async function getChats(
   req: AuthRequest,

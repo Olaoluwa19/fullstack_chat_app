@@ -2,12 +2,12 @@ import express from "express";
 import path from "path";
 
 import { clerkMiddleware } from "@clerk/express";
-import { errorHandler } from "./middleware/errorHandler";
+import { errorHandler } from "./middleware/errorHandler.js";
 
-import authRoutes from "./routes/authRoute";
-import chatRoutes from "./routes/chatRoute";
-import messageRoutes from "./routes/messageRoute";
-import userRoutes from "./routes/userRoute";
+import authRoutes from "./routes/authRoute.js";
+import chatRoutes from "./routes/chatRoute.js";
+import messageRoutes from "./routes/messageRoute.js";
+import userRoutes from "./routes/userRoute.js";
 
 const app = express();
 
