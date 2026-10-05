@@ -9,6 +9,12 @@ import chatRoutes from "./routes/chatRoute.js";
 import messageRoutes from "./routes/messageRoute.js";
 import userRoutes from "./routes/userRoute.js";
 
+import { fileURLToPath } from "url";
+
+// Define __dirname and __filename for ESM compatibility
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 
 app.use(express.json());
