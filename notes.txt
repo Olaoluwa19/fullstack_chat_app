@@ -24,3 +24,8 @@ bun add -d bun-types
 bun add -g vercel
 vercel          # first time: creates project + preview URL
 vercel --prod   # promote to production
+
+on mobile:
+
+bunx expo start --tunnel
+bunx tailwindcss init
